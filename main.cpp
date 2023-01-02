@@ -44,10 +44,7 @@ int main()
     inventoryVector.push_back(new Inventory{10,INITIAL_INVENTORY});
     inventoryVector.push_back(new Inventory{20,INITIAL_INVENTORY});
     inventoryVector.push_back(new Inventory{100,INITIAL_INVENTORY});
-    inventoryVector.push_back(new Inventory{500,INITIAL_INVENTORY});
-
-
-
+//    inventoryVector.push_back(new Inventory{500,INITIAL_INVENTORY});
 
     do{
         PrintMenu();
