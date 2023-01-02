@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <regex>
 #include "Horse.h"
 #include "Inventory.h"
 
@@ -50,6 +51,22 @@ int main()
         PrintMenu();
         std::string inputStr;
         getline(cin,inputStr);
+
+        // Remove Preceding & Trailing whitespaces & Handling multiple spaces
+        while( (inputStr.size()>=1) && (inputStr.at(0)==' ') ){
+            inputStr.erase(0,1);
+        }
+
+        while ( (inputStr.size()>=1)&& (inputStr.at(inputStr.size()-1)==' ')){
+            inputStr.erase(inputStr.size()-1,1);
+        }
+
+        if(inputStr.size() >=0){
+        std::regex reg(R"(\s+)");
+        inputStr = std::regex_replace(inputStr, reg," ");
+        }
+
+        // Break input into strings
         std::stringstream ss(inputStr);
 
         std::vector<std::string> inputStringsVector;
@@ -59,7 +76,7 @@ int main()
         }
 
 
-        if(inputStringsVector.size() == 1)
+       if(inputStringsVector.size() == 1)
         {
             if(inputStringsVector[0].size()==1){
                 if(inputStringsVector[0].at(0)=='R' || inputStringsVector[0].at(0)=='r'){
